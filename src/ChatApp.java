@@ -33,17 +33,10 @@ public class ChatApp {
             int choice = scanner.nextInt();
 
             switch (choice) {
-                case 1:
-                    registerUser(scanner);
-                    break;
-                case 2:
-                    loginUser(scanner);
-                    break;
-                case 3:
-                    logger.info("Goodbye!");
-                    System.exit(0);
-                default:
-                    logger.warning("Invalid choice. Please try again.");
+                case 1 -> registerUser(scanner);
+                case 2 -> loginUser(scanner);
+                case 3 -> System.exit(0);
+                default -> logger.warning("Invalid choice. Please try again.");
             }
         }
     }
@@ -71,10 +64,8 @@ public class ChatApp {
         String email = scanner.next();
 
         if (registeredUsers.containsKey(email)) {
-            // Log successful login
             log("User logged in: " + email);
 
-            // Simulate chat
             User currentUser = registeredUsers.get(email);
             chat(currentUser, scanner);
         } else {
@@ -93,7 +84,6 @@ public class ChatApp {
 
             ChatMessage chatMessage = new ChatMessage(currentUser, message);
 
-            // Save to chat history file
             saveMessageToFile(chatMessage);
         }
     }
